@@ -55,7 +55,6 @@ abstract class Container
    }
    /**
     * Returns the struct contents in order.
-    * @throws DBusException If there is  a problem doing this.
     */
    public final Object[] getParameters()
    {
