@@ -18,13 +18,27 @@
  */
 package org.freedesktop.dbus;
 
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Gettext
 {
-   private static ResourceBundle myResources =
-      ResourceBundle.getBundle("dbusjava_localized");
+   final private static ResourceBundle myResources;
+   static {
+      ResourceBundle resources;
+      try {
+         resources = ResourceBundle.getBundle("dbusjava_localized");
+      } catch (MissingResourceException e) {
+         resources = null;
+      }
+      myResources = resources;
+   }
+
    public static String _(String s) {
+      if (myResources == null) {
+         return s;
+      }
+
       return myResources.getString(s);
    }
 }
