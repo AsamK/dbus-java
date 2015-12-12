@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = version_number
+applicationName = 'DBusDaemon'
+mainClassName = 'org.freedesktop.dbus.bin.DBusDaemon'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':bin')
+}

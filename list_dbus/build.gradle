@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = version_number
+applicationName = 'ListDBus'
+mainClassName = 'org.freedesktop.dbus.bin.ListDBus'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':bin')
+}

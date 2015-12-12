@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = version_number
+applicationName = 'CreateInterface'
+mainClassName = 'org.freedesktop.dbus.bin.CreateInterface'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':bin')
+}

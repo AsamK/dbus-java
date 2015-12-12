@@ -1,0 +1,1 @@
+include 'lib', 'bin', 'viewer', 'create_interface', 'dbus_call', 'dbus_daemon', 'list_dbus', 'dbus_viewer'

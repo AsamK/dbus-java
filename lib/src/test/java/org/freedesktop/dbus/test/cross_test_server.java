@@ -316,7 +316,7 @@ public class cross_test_server implements DBus.Binding.Tests, DBus.Binding.Singl
       }
    }
 
-   public static void main(String[] args)
+   public static void main()
    { try {
       DBusConnection conn = DBusConnection.getConnection(DBusConnection.SESSION);
       conn.requestBusName("org.freedesktop.DBus.Binding.TestServer");

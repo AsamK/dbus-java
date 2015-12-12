@@ -46,6 +46,7 @@ import org.freedesktop.DBus.Error.UnknownObject;
 import org.freedesktop.DBus.Peer;
 import org.freedesktop.DBus.Introspectable;
 import org.freedesktop.DBus.Properties;
+import org.testng.annotations.Test;
 
 class testnewclass implements TestNewInterface
 {
@@ -553,7 +554,8 @@ public class test
    static DBusConnection serverconn = null;
    static DBusConnection clientconn = null;
    @SuppressWarnings("unchecked")
-   public static void main(String[] args) 
+   @Test
+   public static void main()
    { try {
       System.out.println("Creating Connection");
       serverconn = DBusConnection.getConnection(DBusConnection.SESSION);

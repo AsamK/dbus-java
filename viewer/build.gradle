@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = JavaVersion.VERSION_1_5
+archivesBaseName = "dbus-java-viewer"
+version = version_number
+applicationName = 'DBusViewer'
+mainClassName = 'org.freedesktop.dbus.viewer.DBusViewer'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':bin')
+}

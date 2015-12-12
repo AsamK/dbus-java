@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_5
+archivesBaseName = "dbus-java-bin"
+version = version_number
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':lib')
+}

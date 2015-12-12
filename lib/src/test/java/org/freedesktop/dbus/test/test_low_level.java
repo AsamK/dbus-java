@@ -18,7 +18,7 @@ import org.freedesktop.dbus.Transport;
 
 public class test_low_level
 {
-   public static void main(String[] args) throws Exception
+   public static void main() throws Exception
    {
       Debug.setHexDump(true);
       String addr = System.getenv("DBUS_SESSION_BUS_ADDRESS");

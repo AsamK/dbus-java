@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = version_number
+applicationName = 'DBusCall'
+mainClassName = 'org.freedesktop.dbus.bin.Caller'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':bin')
+}
