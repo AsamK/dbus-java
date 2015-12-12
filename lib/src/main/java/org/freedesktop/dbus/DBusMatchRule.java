@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.DBusExecutionException;
@@ -79,13 +79,13 @@ public class DBusMatchRule
          else
             iface = AbstractConnection.dollar_pattern.matcher(c.getName()).replaceAll(".");
          if (!iface.matches(".*\\..*"))
-            throw new DBusException(_("DBusInterfaces must be defined in a package."));
+            throw new DBusException(t("DBusInterfaces must be defined in a package."));
          member = null;
          type = null;
       }
       else if (DBusSignal.class.isAssignableFrom(c)) {
          if (null == c.getEnclosingClass())
-            throw new DBusException(_("Signals must be declared as a member of a class implementing DBusInterface which is the member of a package."));
+            throw new DBusException(t("Signals must be declared as a member of a class implementing DBusInterface which is the member of a package."));
          else
             if (null != c.getEnclosingClass().getAnnotation(DBusInterfaceName.class))
                iface = c.getEnclosingClass().getAnnotation(DBusInterfaceName.class).value();
@@ -93,7 +93,7 @@ public class DBusMatchRule
                iface = AbstractConnection.dollar_pattern.matcher(c.getEnclosingClass().getName()).replaceAll(".");
          // Don't export things which are invalid D-Bus interfaces
          if (!iface.matches(".*\\..*"))
-            throw new DBusException(_("DBusInterfaces must be defined in a package."));
+            throw new DBusException(t("DBusInterfaces must be defined in a package."));
          if (c.isAnnotationPresent(DBusMemberName.class))
             member = c.getAnnotation(DBusMemberName.class).value();
          else
@@ -107,7 +107,7 @@ public class DBusMatchRule
          else
             iface = AbstractConnection.dollar_pattern.matcher(c.getName()).replaceAll(".");
          if (!iface.matches(".*\\..*"))
-            throw new DBusException(_("DBusInterfaces must be defined in a package."));
+            throw new DBusException(t("DBusInterfaces must be defined in a package."));
          member = null;
          type = "error";
       }
@@ -117,12 +117,12 @@ public class DBusMatchRule
          else
             iface = AbstractConnection.dollar_pattern.matcher(c.getClass().getName()).replaceAll(".");
          if (!iface.matches(".*\\..*"))
-            throw new DBusException(_("DBusInterfaces must be defined in a package."));
+            throw new DBusException(t("DBusInterfaces must be defined in a package."));
          member = null;
          type = "error";
       }
       else
-         throw new DBusException(_("Invalid type for match rule: ")+c);
+         throw new DBusException(t("Invalid type for match rule: ")+c);
    }
    public String toString()
    {

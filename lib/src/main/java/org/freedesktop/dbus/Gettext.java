@@ -34,7 +34,7 @@ public class Gettext
       myResources = resources;
    }
 
-   public static String _(String s) {
+   public static String t(String s) {
       if (myResources == null) {
          return s;
       }

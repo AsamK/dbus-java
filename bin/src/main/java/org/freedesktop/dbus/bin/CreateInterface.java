@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus.bin;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 import static org.freedesktop.dbus.bin.IdentifierMangler.mangle;
 
 import java.io.File;
@@ -156,7 +156,7 @@ public class CreateInterface
       Vector<Element> out = new Vector<Element>();
       if (null == meth.getAttribute("name") ||
             "".equals(meth.getAttribute("name"))) {
-         System.err.println(_("ERROR: Method name was blank, failed"));
+         System.err.println(t("ERROR: Method name was blank, failed"));
          System.exit(1);
       }
       String annotations = "";
@@ -271,7 +271,7 @@ public class CreateInterface
    {
       if (null == iface.getAttribute("name") ||
             "".equals(iface.getAttribute("name"))) {
-         System.err.println(_("ERROR: Interface name was blank, failed"));
+         System.err.println(t("ERROR: Interface name was blank, failed"));
          System.exit(1);
       }
 
@@ -440,7 +440,7 @@ public class CreateInterface
          else if ("node".equals(iface.getNodeName())) 
             parseRoot((Element) iface);
          else {
-            System.err.println(_("ERROR: Unknown node: ")+iface.getNodeName());
+            System.err.println(t("ERROR: Unknown node: ")+iface.getNodeName());
             System.exit(1);
          }
       }
@@ -573,7 +573,7 @@ public class CreateInterface
          if (name.equals(n.getNodeName())) return;
          expected += name + " or ";
       }
-      System.err.println(MessageFormat.format(_("ERROR: Expected {0}, got {1}, failed."), new Object[] { expected.replaceAll("....$", ""), n.getNodeName() }));
+      System.err.println(MessageFormat.format(t("ERROR: Expected {0}, got {1}, failed."), new Object[] { expected.replaceAll("....$", ""), n.getNodeName() }));
       System.exit(1);
    }
 
@@ -626,7 +626,7 @@ public class CreateInterface
             version();
             System.exit(0);
          } else if (p.startsWith("-")) {
-            System.err.println(_("ERROR: Unknown option: ")+p);
+            System.err.println(t("ERROR: Unknown option: ")+p);
             printSyntax();
             System.exit(1);
          }
@@ -661,22 +661,22 @@ public class CreateInterface
          Introspectable in = conn.getRemoteObject(config.busname, config.object, Introspectable.class);
          String id = in.Introspect();
          if (null == id) {
-            System.err.println(_("ERROR: Failed to get introspection data"));
+            System.err.println(t("ERROR: Failed to get introspection data"));
             System.exit(1);
          }
          introspectdata = new StringReader(id);
          conn.disconnect();
       } catch (DBusException DBe) {
-         System.err.println(_("ERROR: Failure in DBus Communications: ")+DBe.getMessage());
+         System.err.println(t("ERROR: Failure in DBus Communications: ")+DBe.getMessage());
          System.exit(1);
       } catch (DBusExecutionException DEe) {
-         System.err.println(_("ERROR: Failure in DBus Communications: ")+DEe.getMessage());
+         System.err.println(t("ERROR: Failure in DBus Communications: ")+DEe.getMessage());
          System.exit(1);
 
       } else if (null != config.datafile) try {
          introspectdata = new InputStreamReader(new FileInputStream(config.datafile));
       } catch (FileNotFoundException FNFe) {
-         System.err.println(_("ERROR: Could not find introspection file: ")+FNFe.getMessage());
+         System.err.println(t("ERROR: Could not find introspection file: ")+FNFe.getMessage());
          System.exit(1);
       }
       try {

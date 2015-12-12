@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus.viewer;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.awt.Component;
 import java.io.BufferedWriter;
@@ -114,8 +114,8 @@ final class FileSaver implements Runnable
 
 							int confirm = JOptionPane.showConfirmDialog(
 									parentComponent, errorMessage
-											+ ".\n"+_("Try saving other files?"),
-									_("Save Failed"),
+											+ ".\n"+ t("Try saving other files?"),
+									t("Save Failed"),
 									JOptionPane.OK_CANCEL_OPTION,
 									JOptionPane.ERROR_MESSAGE);
 							if (confirm != JOptionPane.OK_OPTION)
@@ -126,7 +126,7 @@ final class FileSaver implements Runnable
 						else
 						{
 							JOptionPane.showMessageDialog(parentComponent,
-									errorMessage + ".", _("Save Failed"),
+									errorMessage + ".", t("Save Failed"),
 									JOptionPane.ERROR_MESSAGE);
 						}
 					}
@@ -135,15 +135,15 @@ final class FileSaver implements Runnable
 			else
 			{
 
-				final String errorMessage = _("Could not access parent directory for ")
+				final String errorMessage = t("Could not access parent directory for ")
 						+ fileName;
 				if (iterator.hasNext())
 				{
 
 					int confirm = JOptionPane.showConfirmDialog(
 							parentComponent, errorMessage
-									+ ".\n"+_("Try saving other files?"),
-							_("Save Failed"), JOptionPane.OK_CANCEL_OPTION,
+									+ ".\n"+ t("Try saving other files?"),
+							t("Save Failed"), JOptionPane.OK_CANCEL_OPTION,
 							JOptionPane.ERROR_MESSAGE);
 					if (confirm != JOptionPane.OK_OPTION)
 					{
@@ -153,7 +153,7 @@ final class FileSaver implements Runnable
 				else
 				{
 					JOptionPane.showMessageDialog(parentComponent, errorMessage
-							+ ".", _("Save Failed"), JOptionPane.ERROR_MESSAGE);
+							+ ".", t("Save Failed"), JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}

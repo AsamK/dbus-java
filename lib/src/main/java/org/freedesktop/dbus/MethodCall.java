@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.util.Vector;
 import org.freedesktop.dbus.exceptions.DBusException;
@@ -30,7 +30,7 @@ public class MethodCall extends Message
       super(Message.Endian.BIG, Message.MessageType.METHOD_CALL, flags);
 
       if (null == member || null == path)
-         throw new MessageFormatException(_("Must specify destination, path and function name to MethodCalls."));
+         throw new MessageFormatException(t("Must specify destination, path and function name to MethodCalls."));
       headers.put(Message.HeaderField.PATH,path);
       headers.put(Message.HeaderField.MEMBER,member);
 

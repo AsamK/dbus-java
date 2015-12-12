@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus.viewer;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
@@ -122,7 +122,7 @@ public class DBusViewer
 	{
 		for (final String key : connectionTypes.keySet())
 		{
-			final JLabel label = new JLabel(_("Processing DBus for ") + key);
+			final JLabel label = new JLabel(t("Processing DBus for ") + key);
 			tabbedPane.addTab(key, label);
 		}
 		Runnable loader = new Runnable()
@@ -179,7 +179,7 @@ public class DBusViewer
 								JLabel label = (JLabel) tabbedPane
 										.getComponentAt(index);
 								label
-										.setText(_("Could not load Dbus information for ")
+										.setText(t("Could not load Dbus information for ")
 												+ key + ":" + e.getMessage());
 							}
 						});
@@ -195,7 +195,7 @@ public class DBusViewer
 								JLabel label = (JLabel) tabbedPane
 										.getComponentAt(index);
 								label
-										.setText(_("Could not load Dbus information for ")
+										.setText(t("Could not load Dbus information for ")
 												+ key + ":" + e.getMessage());
 							}
 						});
@@ -292,7 +292,7 @@ public class DBusViewer
 				builder = factory.newDocumentBuilder();
 			} catch (ParserConfigurationException e1) {
 				// TODO Auto-generated catch block
-				throw new RuntimeException(_("Error during parser init: ")+e1.getMessage(),e1);
+				throw new RuntimeException(t("Error during parser init: ")+e1.getMessage(),e1);
 			}
 			reset();
 			

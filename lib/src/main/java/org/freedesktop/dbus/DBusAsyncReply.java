@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -97,12 +97,12 @@ public class DBusAsyncReply<ReturnType>
       checkReply();
       if (null != rval) return rval;
       else if (null != error) throw error;
-      else throw new NoReply(_("Async call has not had a reply"));
+      else throw new NoReply(t("Async call has not had a reply"));
    }
 
    public String toString()
    {
-      return _("Waiting for: ")+mc;
+      return t("Waiting for: ")+mc;
    }
    Method getMethod() { return me; }
    AbstractConnection getConnection() { return conn; }

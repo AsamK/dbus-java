@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -90,7 +90,7 @@ public class Transport
                command = COMMAND_ERROR;
                data = ss[1];
             } else {
-               throw new IOException(_("Invalid Command ")+ss[0]);
+               throw new IOException(t("Invalid Command ")+ss[0]);
             }
             if (Debug.debug) Debug.print(Debug.VERBOSE, "Created command: "+this);
          }
@@ -793,12 +793,12 @@ public class Transport
          in = s.getInputStream();
          out = s.getOutputStream();
       } else {
-         throw new IOException(_("unknown address type ")+address.getType());
+         throw new IOException(t("unknown address type ")+address.getType());
       }
       
       if (!(new SASL()).auth(mode, types, address.getParameter("guid"), out, in, us)) {
          out.close();
-         throw new IOException(_("Failed to auth"));
+         throw new IOException(t("Failed to auth"));
       }
       if (null != us) {
          if (Debug.debug) Debug.print(Debug.VERBOSE, "Setting timeout to "+timeout+" on Socket");

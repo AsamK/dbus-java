@@ -10,7 +10,7 @@
 */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.dbus.Gettext._;
+import static org.freedesktop.dbus.Gettext.t;
 
 import java.lang.reflect.Array;
 import java.text.MessageFormat;
@@ -48,10 +48,10 @@ class ArrayFrob
    public static <T> T[] wrap(Object o) throws IllegalArgumentException
    {
          Class<? extends Object> ac = o.getClass();
-         if (!ac.isArray()) throw new IllegalArgumentException(_("Not an array"));
+         if (!ac.isArray()) throw new IllegalArgumentException(t("Not an array"));
          Class<? extends Object> cc = ac.getComponentType();
          Class<? extends Object> ncc = primitiveToWrapper.get(cc);
-         if (null == ncc) throw new IllegalArgumentException(_("Not a primitive type"));
+         if (null == ncc) throw new IllegalArgumentException(t("Not a primitive type"));
          T[] ns = (T[]) Array.newInstance(ncc, Array.getLength(o));
          for (int i = 0; i < ns.length; i++)
             ns[i] = (T) Array.get(o, i);
@@ -63,7 +63,7 @@ class ArrayFrob
       Class<? extends T[]> ac = (Class<? extends T[]>) ns.getClass();
       Class<T> cc = (Class<T>) ac.getComponentType();
       Class<? extends Object> ncc = wrapperToPrimitive.get(cc);
-      if (null == ncc) throw new IllegalArgumentException(_("Not a wrapper type"));
+      if (null == ncc) throw new IllegalArgumentException(t("Not a wrapper type"));
       Object o = Array.newInstance(ncc, ns.length);
       for (int i = 0; i < ns.length; i++)
          Array.set(o, i, ns[i]);
@@ -77,7 +77,7 @@ class ArrayFrob
    public static <T> List<T> listify(Object o) throws IllegalArgumentException
    {
       if (o instanceof Object[]) return listify((T[]) o);
-      if (!o.getClass().isArray()) throw new IllegalArgumentException(_("Not an array"));
+      if (!o.getClass().isArray()) throw new IllegalArgumentException(t("Not an array"));
       List<T> l = new ArrayList<T>(Array.getLength(o));
       for (int i = 0; i < Array.getLength(o); i++)
          l.add((T)Array.get(o, i));
@@ -161,7 +161,7 @@ class ArrayFrob
          throw new IllegalArgumentException(e);
       }
 
-      throw new IllegalArgumentException(MessageFormat.format(_("Not An Expected Convertion type from {0} to {1}"), new Object[] { o.getClass(), c}));
+      throw new IllegalArgumentException(MessageFormat.format(t("Not An Expected Convertion type from {0} to {1}"), new Object[] { o.getClass(), c}));
    }
    public static Object[] type(Object[] old, Class<Object> c)
    {
