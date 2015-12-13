@@ -1,3 +1,20 @@
+Use in gradle projects
+----------------------
+Install dbus-java.so on your system. It’s provided by most distributions.
+
+build.gradle:
+```
+repositories {
+    maven {
+        url "https://raw.github.com/AsamK/maven/master/releases/"
+    }
+}
+
+dependencies {
+    compile 'org.freedesktop.dbus:dbus-java:2.7.0'
+}
+```
+
 D-Bus Java README
 -----------------
 
